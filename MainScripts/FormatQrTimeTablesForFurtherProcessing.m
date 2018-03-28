@@ -1,11 +1,10 @@
 % Script to format computed Qr TimeTables by:
 % (1) Rounding the timestamps in XX:59:59 to (XX+1):00:00
 % (2) Adding a 'Day of year' field for further representations/plots
-% (3) removing the first months to avoid problems due to the model initialisation
-%
+% (3) removing the first months of the dataset
 %
 % Tested on 18 Jan 2018 : Works perfectly on the already computed Qr TimeTables
-%                         It is slow however
+%                         It is VERY slow however
 %
 %******************************************** R. CARDOT - 17 Jan 2018 *****
 
@@ -15,7 +14,7 @@
 FolderWithQrTimeTables = 'C:\Users\rcardot\Documents\Hydrologie\TOPKAPI_ETHZ\Simulation Results\ComputedQr_Mar2018_v3';
 
 % FolderForFormattedFiles = uigetdir(pwd,'Folder with Output files');
-FolderForFormattedFiles = 'C:\Users\rcardot\Documents\Hydrologie\TOPKAPI_ETHZ\Simulation Results\ComputedQr_Mar2018_v3\BetterFormattedTimeTables';
+FolderForFormattedFiles = [FolderWithQrTimeTables,'\','BetterFormattedTimeTables'];
 
 if ~exist(FolderForFormattedFiles,'dir')
    mkdir(FolderForFormattedFiles) 

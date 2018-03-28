@@ -1,0 +1,5 @@
+# Git Ignore for Matlab
+# R.Cardot / Mar 2018
+
+# AutoSave files
+.asv
