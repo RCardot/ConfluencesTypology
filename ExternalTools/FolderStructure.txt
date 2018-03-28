@@ -1,0 +1,9 @@
+**** Description of the folder content 
+
+
+- Brewermap : contains a tool used to easily get new, visually better colormaps when plotting, mapping, etc.
+- MaximizeFigureWindow : contains a tool which Maximize the current figure window to full screen
+
+
+**** Versions
+- Created: 27 Mar 2018 / R. Cardot

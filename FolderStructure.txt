@@ -1,0 +1,14 @@
+**** Description of the folder content 
+
+
+- ExternalTools : It contains tools downloaded fron the mathworks file exchange or directly from the git hub page of certain projects.
+			These tools are used within other script or functions. 
+- Functions : 	    It contains functions corresponding to sub-tasks, which have to be performed within other scripts.
+- MainScripts:      It contain more 'general' scripts. The scripts therein mostly intend to be like 'Workflows' to process data following a certain maner
+- startup.m : 	    Is a file setting default figure position, background color, font type and size, etc.
+			* If added to path, it will set them for every matlab session
+			* Else, it should be run before using the contained scripts. If not, there might be some issues with font size, etc.
+- SampleDataset:    It contains a set of MAT-Files pre-processed through RiverSurveyorLive (RSL) by SonTek
+
+**** Versions
+- Created: 27 Mar 2018 / R. Cardot

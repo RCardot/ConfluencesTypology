@@ -1,0 +1,8 @@
+**** Description of the folder content 
+
+- WorkFlowForWAterVelocityImport.m : Import all MAT-Files from RSL contained within a folder, filter them, and store them as tables. 
+					It create separates tables for Water velocity samples than for Positionning/Bathymetry/Bedload calculation
+					It calls functions which computes the apparent bedload velocity from the GPS and Bottom Track data
+
+**** Versions
+- Created: 27 Mar 2018 / R. Cardot

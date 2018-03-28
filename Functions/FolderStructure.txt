@@ -1,0 +1,9 @@
+**** Description of the folder content 
+
+
+- ImportAndCalculation : contains functions to process MAT-Files from RiverSurveyorLive (RSL) (SonTek M9 post-processing software)
+- PlottingAndMapping : contains functions used when creating figures with pre-processed M9 data
+
+
+**** Versions
+- Created: 27 Mar 2018 / R. Cardot
