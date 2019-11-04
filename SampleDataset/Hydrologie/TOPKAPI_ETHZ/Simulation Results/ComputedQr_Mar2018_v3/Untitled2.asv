@@ -1,0 +1,93 @@
+% Script to plot Stacked timeseries by cluster
+
+% User selection dialog  box for the file resulting from clustering
+[FileWithClusters,PathOfFilesWithClusters] = uigetfile('*.mat',...
+    'Select the file with the clusters');
+
+load([PathOfFilesWithClusters,FileWithClusters])
+
+
+% get the folder where the Qr TimeTables are stored as MAT-files
+WorkingFolder = uigetdir(pwd,'Folder with Qr files');
+
+%
+% OutPutFIGFolder = uigetdir(pwd,'Folder for axes export');
+
+tic % Start timer
+
+% Get list of Qr files
+ListFiles = dir([WorkingFolder,'\Qr*.mat']);
+
+% Load the PixelsID XLSX-File to display the confluence name on the plots
+PixID = readtable('C:\Users\rcardot\Documents\Hydrologie\TOPKAPI_ETHZ\PIxels_ID_CorrectedMar2018_corrected_v2.xlsx');
+
+% Store and change directory
+StorePWD = pwd;
+cd(WorkingFolder);
+
+% Creation of the figure
+fig = figure;
+MaximizeFigureWindow;
+% set(fig,'Visible','off')
+
+% Creation of a tab group
+TabGroup = uitabgroup;
+
+ListCluster = unique(ClusteringResultAndScores.Cluster);
+
+% Loop parameters
+StartLoop = 1;
+EndLoop = length(ListCluster); % 2;
+NbFiles = height(;ClusteringResultAndScores);
+FileNumber = 1;
+hWaitBar = waitbar(0,'');
+
+
+% One iteration per Qr file
+for i = StartLoop : EndLoop
+    
+    ListJunctionNumber = ClusteringResultAndScores.JunctionNumber(ClusteringResultAndScores.Cluster == ListCluster(i));
+    
+    % Creates a new tab with empty axes
+    TabName = num2str(ListCluster(i),'Cluster n°%i');
+    
+    Tab = uitab(TabGroup,'title',TabName);
+    Tab.UserData = ListCluster(i);
+    ax = axes('Parent',Tab);
+    
+    for j = length(ListJunctionNumber)
+        % Get the strings of the file name
+        FileName = num2str(ListJunctionNumber(j),'Qr_%d.mat');
+        idxFile = strcmp({ListFiles.name},FileName);
+        
+        %     JunctionNumber = sscanf(TabName,'Qr_%d');
+        PlotName = TabName;
+        
+        waitbar(i/NbFiles,hWaitBar,num2str([FileNumber,NbFiles],'Processing File %d on %d'))
+        
+        
+        
+        
+        disp([num2str([FileNumber,NbFiles],'Processing File %d on %d'),' (',ListFiles(idxFile).name,')'])
+        
+        FileNumber= FileNumber + 1;
+        % Load the Qr Time Table
+        load(ListFiles(idxFile).name)
+        if j ~= 1
+            Qr = [Qr;Qr];
+        end
+        
+    end
+    
+    % Plot the values as a tome serie within the predefined axes
+    PlotStackedYearlyTimeseries(ax,Qr,4,PlotName);
+    
+    % %     savefig(ax,[OutPutFIGFolder,'\',PlotName]);
+    
+    % Iteration of the processed file
+    
+end
+fig.Visible ='on';
+cd(StorePWD)
+
+toc
