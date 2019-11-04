@@ -1,0 +1,5 @@
+% Aggregate clusters results from the three dataset
+
+GeomorphClusters = load('C:\Users\rcardot\Documents\MATLAB\ConfluencesTypology\SampleFigures\PCAResults\Geomorph\Geomorph_standardized_ClustersAndScores_20180329.mat');
+GeometryClusters = load('C:\Users\rcardot\Documents\MATLAB\ConfluencesTypology\SampleFigures\PCAResults\Geometry\Geometry_standardized_ClustersAndScores_20180329.mat');
+HydrologyClusters = load('C:\Users\rcardot\Documents\MATLAB\ConfluencesTypology\SampleFigures\PCAResults\Geomorph\Q_standardized_ClustersAndScores_20180329.mat');
